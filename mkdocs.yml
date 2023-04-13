@@ -1,0 +1,61 @@
+site_name: 一点笔记
+
+nav:
+  - Home: index.md
+  - 论文阅读:
+      - 2018-bert.md: 论文阅读/2018-bert.md
+      - 2021-LoRA.md: 论文阅读/2021-LoRA.md
+      - 2021-P-tuning2.md: 论文阅读/2021-P-tuning2.md
+  - 数据结构:
+    - 剑指offer: 数据结构/剑指offer.md
+    - LCHot-100: 数据结构/LCHot-100.md
+  - Linux工具:
+    - cmd指令: Linux工具/cmd指令.md
+    - conda: Linux工具/conda.md
+    - screen: Linux工具/screen.md
+  - 部署与运维:
+    - docker: 部署与运维/docker笔记.md
+    - 单机多服务: 部署与运维/单机多服务.md
+    - ubuntu安装的坑: 部署与运维/ubuntu安装的坑.md
+
+theme:
+  font:
+    text: Ubuntu
+    code: Ubuntu Mono
+  name: material
+  favicon: img/logo.png
+  logo: img/logo.png
+  feature:
+    tabs: true
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.instant
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  language: zh
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
