@@ -10,6 +10,8 @@ K-means是一种非常经典且简单的聚类算法。它的目的是将n个观
 
 ### 图示
 
+
+
 ```mermaid
 flowchart TD
     A((开始)) --> B[选择聚类数目k]
@@ -37,13 +39,13 @@ flowchart TD
 
 分配观察点到最近的聚类中心的公式如下：
 
-$$ c_i = \arg\min\limits_{c \in \{1, 2, \cdots, k\}} d(x_i, \mu_c) $$
+$c_i = \arg\min\limits_{c \in \{1, 2, \cdots, k\}} d(x_i, \mu_c)$
 
 其中，$c_i$表示第$i$个观察点$x_i$所属的聚类，$\mu_c$表示第$c$个聚类的中心，$d(x_i, \mu_c)$表示观察点$x_i$与聚类中心$\mu_c$之间的距离。
 
 更新聚类中心的公式如下：
 
-$$ \mu_c = \frac{1}{n_c} \sum\limits_{x \in C_c} x $$
+$\mu_c = \frac{1}{n_c} \sum\limits_{x \in C_c} x$
 
 其中，$n_c$表示第$c$个聚类中观察点的数量，$C_c$表示第$c$个聚类的观察点集合。
 

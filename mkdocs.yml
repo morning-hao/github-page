@@ -3,9 +3,9 @@ site_name: 一点笔记
 nav:
   - Home: index.md
   - 算法:
-   - 心态: 算法/心态.md
-   - 机器学习:
-     - K-means: 算法/机器学习/K-means.md
+    - 心态: 算法/心态.md
+    - 机器学习:
+      - K-means: 算法/机器学习/K-means.md
   - 论文阅读:
     - 总览: 论文阅读/总览.md
     - 2018-bert.md: 论文阅读/2018-bert.md
@@ -58,7 +58,12 @@ markdown_extensions:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
-
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+          
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
