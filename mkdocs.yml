@@ -2,7 +2,11 @@ site_name: 一点笔记
 
 nav:
   - Home: index.md
+  - 算法:
+    - 机器学习:
+     - K-means: 算法/机器学习/K-means.md
   - 论文阅读:
+    - 总览: 论文阅读/总览.md
     - 2018-bert.md: 论文阅读/2018-bert.md
     - 2021-LoRA.md: 论文阅读/2021-LoRA.md
     - 2021-P-tuning2.md: 论文阅读/2021-P-tuning2.md
