@@ -18,6 +18,10 @@ nav:
     - cmd指令: Linux工具/cmd指令.md
     - conda: Linux工具/conda.md
     - screen: Linux工具/screen.md
+    - 生成reqxx.txt: Linux工具/pipreqs生成requirements.txt文件.md
+    - 管理Jupyter: Linux工具/管理Jupyter Notebook内核.md
+    - git强制更新: Linux工具/同步远程仓库的最新更改到本地.md
+    - 开源协议图示: Linux工具/开源协议图示.md
   - 部署与运维:
     - docker: 部署与运维/docker笔记.md
     - 单机多服务: 部署与运维/单机多服务.md
