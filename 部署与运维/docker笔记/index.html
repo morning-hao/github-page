@@ -1,0 +1,3467 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Linux%E5%B7%A5%E5%85%B7/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E5%9B%BE%E7%A4%BA/">
+      
+      
+        <link rel="next" href="../%E5%8D%95%E6%9C%BA%E5%A4%9A%E6%9C%8D%E5%8A%A1/">
+      
+      <link rel="icon" href="../../img/logo.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>docker - 一点笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="一点笔记" class="md-header__button md-logo" aria-label="一点笔记" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            一点笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E7%AE%97%E6%B3%95/%E5%BF%83%E6%80%81/" class="md-tabs__link">
+        算法
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%80%BB%E8%A7%88/" class="md-tabs__link">
+        论文阅读
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%89%91%E6%8C%87offer/" class="md-tabs__link">
+        数据结构
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Linux%E5%B7%A5%E5%85%B7/cmd%E6%8C%87%E4%BB%A4/" class="md-tabs__link">
+        Linux工具
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        部署与运维
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="一点笔记" class="md-nav__button md-logo" aria-label="一点笔记" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    一点笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          算法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95/%E5%BF%83%E6%80%81/" class="md-nav__link">
+        心态
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          机器学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/K-means/" class="md-nav__link">
+        K-means
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          论文阅读
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          论文阅读
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%80%BB%E8%A7%88/" class="md-nav__link">
+        总览
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/2018-bert/" class="md-nav__link">
+        2018-bert.md
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/2021-LoRA/" class="md-nav__link">
+        2021-LoRA.md
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/2021-P-tuning2/" class="md-nav__link">
+        2021-P-tuning2.md
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/2021-simCSE/" class="md-nav__link">
+        2021-simCSE.md
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/2022-self_instruct/" class="md-nav__link">
+        2022-self_instruct.md
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          数据结构
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据结构
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%89%91%E6%8C%87offer/" class="md-nav__link">
+        剑指offer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LCHot-100/" class="md-nav__link">
+        LCHot-100
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Linux工具
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Linux工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux%E5%B7%A5%E5%85%B7/cmd%E6%8C%87%E4%BB%A4/" class="md-nav__link">
+        cmd指令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux%E5%B7%A5%E5%85%B7/conda/" class="md-nav__link">
+        conda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux%E5%B7%A5%E5%85%B7/screen/" class="md-nav__link">
+        screen
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux%E5%B7%A5%E5%85%B7/pipreqs%E7%94%9F%E6%88%90requirements.txt%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        生成reqxx.txt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux%E5%B7%A5%E5%85%B7/%E7%AE%A1%E7%90%86Jupyter%20Notebook%E5%86%85%E6%A0%B8/" class="md-nav__link">
+        管理Jupyter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux%E5%B7%A5%E5%85%B7/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E6%9C%80%E6%96%B0%E6%9B%B4%E6%94%B9%E5%88%B0%E6%9C%AC%E5%9C%B0/" class="md-nav__link">
+        git强制更新
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux%E5%B7%A5%E5%85%B7/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E5%9B%BE%E7%A4%BA/" class="md-nav__link">
+        开源协议图示
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          部署与运维
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          部署与运维
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        docker
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    一、容器技术介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="一、容器技术介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.什么是容器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    二、容器快速上手
+  </a>
+  
+    <nav class="md-nav" aria-label="二、容器快速上手">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1.命令行介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2.镜像和容器
+  </a>
+  
+    <nav class="md-nav" aria-label="2.镜像和容器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1image" class="md-nav__link">
+    ①image镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2container" class="md-nav__link">
+    ②container容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    ③镜像的获取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3.容器的基本操作
+  </a>
+  
+    <nav class="md-nav" aria-label="3.容器的基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    ①创建、查看、停止、删除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    ②小技巧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4attacheddetached" class="md-nav__link">
+    4.容器的attached和detached模式
+  </a>
+  
+    <nav class="md-nav" aria-label="4.容器的attached和detached模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1detachedattached" class="md-nav__link">
+    ①detached模式启动与attached控制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2log" class="md-nav__link">
+    ②查看log
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5.容器的交互模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6.容器和虚拟机的区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7docker-container-run" class="md-nav__link">
+    7.docker container run 发生的内容
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    三、镜像的创建管理和发布
+  </a>
+  
+    <nav class="md-nav" aria-label="三、镜像的创建管理和发布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1.镜像的获取方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2registry" class="md-nav__link">
+    2.常用的公有registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3.镜像的基本操作
+  </a>
+  
+    <nav class="md-nav" aria-label="3.镜像的基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    ①拉取方式获取镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    ②导入方式获取镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    ③构建方式获取镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    ④提交方式获取镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5dockerhub" class="md-nav__link">
+    ⑤镜像分享到dockerhub
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    四、Dockerfile编写指南
+  </a>
+  
+    <nav class="md-nav" aria-label="四、Dockerfile编写指南">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    ①基本原则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2run" class="md-nav__link">
+    2.RUN: 执行指令
+  </a>
+  
+    <nav class="md-nav" aria-label="2.RUN: 执行指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    ①简单例子
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    ②改进版
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3copyadd" class="md-nav__link">
+    3.COPY与ADD: 文件复制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4workdir" class="md-nav__link">
+    4.WORKDIR: 目录操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5argenv" class="md-nav__link">
+    5.ARG与ENV: 构建参数和环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="5.ARG与ENV: 构建参数和环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    ①例子
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6cmd-1" class="md-nav__link">
+    6.CMD: 容器启动命令1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7entrypoint-2" class="md-nav__link">
+    7.ENTRYPOINT: 容器启动命令2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8shellexec-3" class="md-nav__link">
+    8.Shell格式与Exec格式: 容器启动命令3
+  </a>
+  
+    <nav class="md-nav" aria-label="8.Shell格式与Exec格式: 容器启动命令3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1shell" class="md-nav__link">
+    ①shell格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2exec" class="md-nav__link">
+    ②Exec格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    ③传参问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9dockerfile" class="md-nav__link">
+    9.Dockerfile技巧(最佳实践)
+  </a>
+  
+    <nav class="md-nav" aria-label="9.Dockerfile技巧(最佳实践)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_8" class="md-nav__link">
+    ①合理使用缓存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2dockerignore" class="md-nav__link">
+    ②合理使用.dockerignore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_5" class="md-nav__link">
+    ③镜像的多阶段构建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4root" class="md-nav__link">
+    ④使用非root用户
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    五、docker的存储
+  </a>
+  
+    <nav class="md-nav" aria-label="五、docker的存储">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1data-volume" class="md-nav__link">
+    1.Data Volume
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Data Volume">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1dockerfilevolume" class="md-nav__link">
+    ①在Dockerfile中添加volume指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2volume" class="md-nav__link">
+    ②创建容器时指定使用volume的名字和目录，没有时则创建并使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_6" class="md-nav__link">
+    ③存储清理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2bind-mount" class="md-nav__link">
+    2.Bind Mount
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker_1" class="md-nav__link">
+    六、docker的网络
+  </a>
+  
+    <nav class="md-nav" aria-label="六、docker的网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1ip" class="md-nav__link">
+    1.IP地址的查看
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    2.网络连通性测试
+  </a>
+  
+    <nav class="md-nav" aria-label="2.网络连通性测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1ping" class="md-nav__link">
+    ①ping命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2telnet" class="md-nav__link">
+    ②telnet命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_7" class="md-nav__link">
+    3.抛出疑问
+  </a>
+  
+    <nav class="md-nav" aria-label="3.抛出疑问">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1pingdockerip" class="md-nav__link">
+    ①为什么本地可以直接ping通docker的ip地址？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2ping" class="md-nav__link">
+    ②为什么容器中可以直接ping通外部网络？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3ping" class="md-nav__link">
+    ③为什么本地两个容器之间可以ping通？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4ping" class="md-nav__link">
+    ④为什么外部机器不能ping通本地的容器地址?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    七、docker-compose
+  </a>
+  
+    <nav class="md-nav" aria-label="七、docker-compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1docker-compose" class="md-nav__link">
+    1.docker-compose是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2docker-compose" class="md-nav__link">
+    2.docker-compose安装
+  </a>
+  
+    <nav class="md-nav" aria-label="2.docker-compose安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1windowsmac" class="md-nav__link">
+    ①windows与mac
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2linux" class="md-nav__link">
+    ②linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3pip" class="md-nav__link">
+    ③通过pip安装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3compose" class="md-nav__link">
+    3.compose文件的结构和版本
+  </a>
+  
+    <nav class="md-nav" aria-label="3.compose文件的结构和版本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_9" class="md-nav__link">
+    ①基本语法结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    ②基本命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3docker-compose" class="md-nav__link">
+    ③docker-compose镜像构建和拉取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4docker-compose" class="md-nav__link">
+    ④docker-compose服务更新
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4compose" class="md-nav__link">
+    4.compose网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    5.水平扩展和负载均衡
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    6.环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="6.环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1environment" class="md-nav__link">
+    ①通过environment来设定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2env_file" class="md-nav__link">
+    ②通过env_file来传入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7.服务依赖与健康检查
+  </a>
+  
+    <nav class="md-nav" aria-label="7.服务依赖与健康检查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_10" class="md-nav__link">
+    ①服务依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    ②健康检查
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-swarm" class="md-nav__link">
+    八、docker-swarm
+  </a>
+  
+    <nav class="md-nav" aria-label="八、docker-swarm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1swarm" class="md-nav__link">
+    1.swarm基本操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2overlay" class="md-nav__link">
+    2.overlay网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3ingress" class="md-nav__link">
+    3.ingress网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4service" class="md-nav__link">
+    4.部署多service应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5swarmsecretpass" class="md-nav__link">
+    5.在swarm中使用secret(pass)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6swarmvolumepass" class="md-nav__link">
+    6.在swarm使用本地volume(pass)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker_2" class="md-nav__link">
+    九、docker的多架构支持
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%95%E6%9C%BA%E5%A4%9A%E6%9C%8D%E5%8A%A1/" class="md-nav__link">
+        单机多服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ubuntu%E5%AE%89%E8%A3%85%E7%9A%84%E5%9D%91/" class="md-nav__link">
+        ubuntu安装的坑
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    一、容器技术介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="一、容器技术介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.什么是容器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    二、容器快速上手
+  </a>
+  
+    <nav class="md-nav" aria-label="二、容器快速上手">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1.命令行介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2.镜像和容器
+  </a>
+  
+    <nav class="md-nav" aria-label="2.镜像和容器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1image" class="md-nav__link">
+    ①image镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2container" class="md-nav__link">
+    ②container容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    ③镜像的获取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3.容器的基本操作
+  </a>
+  
+    <nav class="md-nav" aria-label="3.容器的基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    ①创建、查看、停止、删除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    ②小技巧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4attacheddetached" class="md-nav__link">
+    4.容器的attached和detached模式
+  </a>
+  
+    <nav class="md-nav" aria-label="4.容器的attached和detached模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1detachedattached" class="md-nav__link">
+    ①detached模式启动与attached控制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2log" class="md-nav__link">
+    ②查看log
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5.容器的交互模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6.容器和虚拟机的区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7docker-container-run" class="md-nav__link">
+    7.docker container run 发生的内容
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    三、镜像的创建管理和发布
+  </a>
+  
+    <nav class="md-nav" aria-label="三、镜像的创建管理和发布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1.镜像的获取方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2registry" class="md-nav__link">
+    2.常用的公有registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3.镜像的基本操作
+  </a>
+  
+    <nav class="md-nav" aria-label="3.镜像的基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    ①拉取方式获取镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    ②导入方式获取镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    ③构建方式获取镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    ④提交方式获取镜像
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5dockerhub" class="md-nav__link">
+    ⑤镜像分享到dockerhub
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    四、Dockerfile编写指南
+  </a>
+  
+    <nav class="md-nav" aria-label="四、Dockerfile编写指南">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    ①基本原则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2run" class="md-nav__link">
+    2.RUN: 执行指令
+  </a>
+  
+    <nav class="md-nav" aria-label="2.RUN: 执行指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    ①简单例子
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    ②改进版
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3copyadd" class="md-nav__link">
+    3.COPY与ADD: 文件复制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4workdir" class="md-nav__link">
+    4.WORKDIR: 目录操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5argenv" class="md-nav__link">
+    5.ARG与ENV: 构建参数和环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="5.ARG与ENV: 构建参数和环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    ①例子
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6cmd-1" class="md-nav__link">
+    6.CMD: 容器启动命令1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7entrypoint-2" class="md-nav__link">
+    7.ENTRYPOINT: 容器启动命令2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8shellexec-3" class="md-nav__link">
+    8.Shell格式与Exec格式: 容器启动命令3
+  </a>
+  
+    <nav class="md-nav" aria-label="8.Shell格式与Exec格式: 容器启动命令3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1shell" class="md-nav__link">
+    ①shell格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2exec" class="md-nav__link">
+    ②Exec格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    ③传参问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9dockerfile" class="md-nav__link">
+    9.Dockerfile技巧(最佳实践)
+  </a>
+  
+    <nav class="md-nav" aria-label="9.Dockerfile技巧(最佳实践)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_8" class="md-nav__link">
+    ①合理使用缓存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2dockerignore" class="md-nav__link">
+    ②合理使用.dockerignore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_5" class="md-nav__link">
+    ③镜像的多阶段构建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4root" class="md-nav__link">
+    ④使用非root用户
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    五、docker的存储
+  </a>
+  
+    <nav class="md-nav" aria-label="五、docker的存储">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1data-volume" class="md-nav__link">
+    1.Data Volume
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Data Volume">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1dockerfilevolume" class="md-nav__link">
+    ①在Dockerfile中添加volume指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2volume" class="md-nav__link">
+    ②创建容器时指定使用volume的名字和目录，没有时则创建并使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_6" class="md-nav__link">
+    ③存储清理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2bind-mount" class="md-nav__link">
+    2.Bind Mount
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker_1" class="md-nav__link">
+    六、docker的网络
+  </a>
+  
+    <nav class="md-nav" aria-label="六、docker的网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1ip" class="md-nav__link">
+    1.IP地址的查看
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    2.网络连通性测试
+  </a>
+  
+    <nav class="md-nav" aria-label="2.网络连通性测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1ping" class="md-nav__link">
+    ①ping命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2telnet" class="md-nav__link">
+    ②telnet命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_7" class="md-nav__link">
+    3.抛出疑问
+  </a>
+  
+    <nav class="md-nav" aria-label="3.抛出疑问">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1pingdockerip" class="md-nav__link">
+    ①为什么本地可以直接ping通docker的ip地址？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2ping" class="md-nav__link">
+    ②为什么容器中可以直接ping通外部网络？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3ping" class="md-nav__link">
+    ③为什么本地两个容器之间可以ping通？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4ping" class="md-nav__link">
+    ④为什么外部机器不能ping通本地的容器地址?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    七、docker-compose
+  </a>
+  
+    <nav class="md-nav" aria-label="七、docker-compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1docker-compose" class="md-nav__link">
+    1.docker-compose是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2docker-compose" class="md-nav__link">
+    2.docker-compose安装
+  </a>
+  
+    <nav class="md-nav" aria-label="2.docker-compose安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1windowsmac" class="md-nav__link">
+    ①windows与mac
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2linux" class="md-nav__link">
+    ②linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3pip" class="md-nav__link">
+    ③通过pip安装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3compose" class="md-nav__link">
+    3.compose文件的结构和版本
+  </a>
+  
+    <nav class="md-nav" aria-label="3.compose文件的结构和版本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_9" class="md-nav__link">
+    ①基本语法结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    ②基本命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3docker-compose" class="md-nav__link">
+    ③docker-compose镜像构建和拉取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4docker-compose" class="md-nav__link">
+    ④docker-compose服务更新
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4compose" class="md-nav__link">
+    4.compose网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    5.水平扩展和负载均衡
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    6.环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="6.环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1environment" class="md-nav__link">
+    ①通过environment来设定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2env_file" class="md-nav__link">
+    ②通过env_file来传入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7.服务依赖与健康检查
+  </a>
+  
+    <nav class="md-nav" aria-label="7.服务依赖与健康检查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_10" class="md-nav__link">
+    ①服务依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    ②健康检查
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-swarm" class="md-nav__link">
+    八、docker-swarm
+  </a>
+  
+    <nav class="md-nav" aria-label="八、docker-swarm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1swarm" class="md-nav__link">
+    1.swarm基本操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2overlay" class="md-nav__link">
+    2.overlay网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3ingress" class="md-nav__link">
+    3.ingress网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4service" class="md-nav__link">
+    4.部署多service应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5swarmsecretpass" class="md-nav__link">
+    5.在swarm中使用secret(pass)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6swarmvolumepass" class="md-nav__link">
+    6.在swarm使用本地volume(pass)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker_2" class="md-nav__link">
+    九、docker的多架构支持
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h2 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_2">一、容器技术介绍<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>容器是一种技术，Docker是一个容器技术的实现，应用很广泛</p>
+</blockquote>
+<h2 id="1">1.什么是容器<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>容器是一种快速的打包技术</p>
+<ul>
+<li>标准化</li>
+<li>轻量级</li>
+<li>易移植</li>
+</ul>
+<h1 id="_3">二、容器快速上手<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<h2 id="1_1">1.命令行介绍<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>查看docker版本:<code>docker version</code></li>
+<li>查看docker状态:docker info</li>
+<li>指令介绍：docker</li>
+</ol>
+<h2 id="2">2.镜像和容器<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="1image">①image镜像<a class="headerlink" href="#1image" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Docker image是一个read-only文件，这个文件包含文件系统、源码、库文件、工具等运行app所需要的文件</li>
+<li>docker image有分层的概念</li>
+</ol>
+<h3 id="2container">②container容器<a class="headerlink" href="#2container" title="Permanent link">&para;</a></h3>
+<ol>
+<li>复制image并在image最上层加上一层read-write层（container layer层）</li>
+<li>基于同一个image可以创建多个container</li>
+</ol>
+<p><img alt="2-2-2" src="../docker_img/2-2-2.png" /></p>
+<h3 id="3">③镜像的获取<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>自己制作</li>
+<li>从registry(比如docker hub)</li>
+</ol>
+<h2 id="3_1">3.容器的基本操作<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
+<h3 id="1_2">①创建、查看、停止、删除<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令（完整）</th>
+<th align="left">命令（简写）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>容器的创建</td>
+<td>docker container run <image name></td>
+<td align="left">docker run <image name></td>
+</tr>
+<tr>
+<td>容器的查看(up)</td>
+<td>docker container ls</td>
+<td align="left">docker ps</td>
+</tr>
+<tr>
+<td>容器的查看(up 和 exit)</td>
+<td>docker container ls -a</td>
+<td align="left">docker ps -a</td>
+</tr>
+<tr>
+<td>容器的停止</td>
+<td>docker container stop <name(全称) or ID(可简写)></td>
+<td align="left">docker stop <name(全称) or ID(可简写)></td>
+</tr>
+<tr>
+<td>容器的删除</td>
+<td>docker container rm <name(全称) or ID(可简写)></td>
+<td align="left">docker rm <name(全称) or ID(可简写)></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_1">②小技巧<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>批量操作</li>
+</ol>
+<blockquote>
+<p>通过 $(docker container ls -aq) 来获取所有容器的名字</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># 批量启动</span>
+docker<span class="w"> </span>container<span class="w"> </span>start<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>container<span class="w"> </span>ls<span class="w"> </span>-aq<span class="k">)</span>
+<span class="c1"># 批量停止</span>
+docker<span class="w"> </span>container<span class="w"> </span>stop<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>container<span class="w"> </span>ls<span class="w"> </span>-aq<span class="k">)</span>
+<span class="c1"># 批量删除</span>
+docker<span class="w"> </span>container<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>container<span class="w"> </span>ls<span class="w"> </span>-aq<span class="k">)</span>
+</code></pre></div>
+<ol>
+<li>rm不能删除正在运行中的container问题</li>
+</ol>
+<blockquote>
+<p>添加 -f参数</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># 单个强制删除</span>
+docker<span class="w"> </span>container<span class="w"> </span>rm<span class="w"> </span>&lt;name<span class="o">(</span>全称<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>ID<span class="o">(</span>可简写<span class="o">)</span>&gt;<span class="w"> </span>-f
+<span class="c1"># 批量强制删除</span>
+docker<span class="w"> </span>container<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>container<span class="w"> </span>ls<span class="w"> </span>-aq<span class="k">)</span><span class="w"> </span>-f
+</code></pre></div>
+<ol>
+<li>删除已经推出的容器</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>container<span class="w"> </span>prune<span class="w"> </span>-f
+</code></pre></div>
+<h2 id="4attacheddetached">4.容器的attached和detached模式<a class="headerlink" href="#4attacheddetached" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>attached模式与detached模式，前台执行与后台执行</p>
+</blockquote>
+<ol>
+<li>启动时尽量使用detached模式，免得不小心把container关了</li>
+<li>进入查看log尽量不用attached模式，同样免得不小心把container关了，用<code>docker container logs &lt;name(全称) or ID(可简写)&gt;</code></li>
+<li>如果要进行交互，推荐使用交互模式</li>
+</ol>
+<h3 id="1detachedattached">①detached模式启动与attached控制<a class="headerlink" href="#1detachedattached" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># attached模式启动</span>
+docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span><span class="o">(</span>-it<span class="o">)</span><span class="w"> </span>&lt;name<span class="o">(</span>全称<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>ID<span class="o">(</span>可简写<span class="o">)</span>&gt;<span class="w"> </span><span class="o">(</span>sh<span class="o">)</span>
+<span class="c1"># attached控制</span>
+docker<span class="w"> </span>attach<span class="w"> </span>&lt;name<span class="o">(</span>全称<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>ID<span class="o">(</span>可简写<span class="o">)</span>&gt;
+<span class="c1"># detached模式启动</span>
+docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>&lt;name<span class="o">(</span>全称<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>ID<span class="o">(</span>可简写<span class="o">)</span>&gt;
+</code></pre></div>
+<h3 id="2log">②查看log<a class="headerlink" href="#2log" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 静态:暂时查看一次</span>
+docker<span class="w"> </span>container<span class="w"> </span>logs<span class="w"> </span>&lt;name<span class="o">(</span>全称<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>ID<span class="o">(</span>可简写<span class="o">)</span>&gt;
+<span class="c1"># 动态:持续查看</span>
+docker<span class="w"> </span>container<span class="w"> </span>logs<span class="w"> </span>&lt;name<span class="o">(</span>全称<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>ID<span class="o">(</span>可简写<span class="o">)</span>&gt;<span class="w"> </span>-f
+</code></pre></div>
+<h2 id="5">5.容器的交互模式<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>启动容器时如果用attached模式退出后容器也跟着推出了，如果需要在容器中进行操作可以用detached启动，然后再用<code>exec</code>进入容器交互</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w">  </span>&lt;name<span class="o">(</span>全称<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>ID<span class="o">(</span>可简写<span class="o">)</span>&gt;<span class="w"> </span>sh<span class="w"> </span>
+</code></pre></div>
+<h2 id="6">6.容器和虚拟机的区别<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p><img alt="2-6-1" src="../docker_img/2-6-1.png" /></p>
+<blockquote>
+<p>容器不是mini的虚拟机</p>
+</blockquote>
+<ol>
+<li>容器其实是进程Containers are just processes</li>
+<li>容器中的进程被限制了对CPU内存等资源的访问</li>
+<li>当进程停止后，容器就退出了</li>
+</ol>
+<h2 id="7docker-container-run">7.docker container run 发生的内容<a class="headerlink" href="#7docker-container-run" title="Permanent link">&para;</a></h2>
+<p><code>docker container run -d --p 80:80 nginx</code></p>
+<ol>
+<li>在本地查找是否有nginx这个image镜像，但是没有发现</li>
+<li>去远程的image registry查找nginx镜像（默认的registry是Docker Hub)</li>
+<li>下载最新版本的nginx镜像 （nginx:latest 默认)</li>
+<li>基于nginx镜像来创建一个新的容器，并且准备运行</li>
+<li>docker engine分配给这个容器一个虚拟IP地址</li>
+<li>在宿主机上打开80端口并把容器的80端口转发到宿主机上</li>
+<li>启动容器，运行指定的命令（这里是一个shell脚本去启动nginx）</li>
+</ol>
+<h1 id="_4">三、镜像的创建管理和发布<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<h2 id="1_3">1.镜像的获取方式<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li>(online)从registry拉取: pull from registry(公有、私有)</li>
+<li>(offline)从文件导入: load from file</li>
+<li>(online)从Dockerfile构建: build from Dockerfile </li>
+<li>(online)从container提交: commit from container</li>
+</ol>
+<h2 id="2registry">2.常用的公有registry<a class="headerlink" href="#2registry" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://hub.docker.com/">Docker Hub Container Image Library | App Containerization</a></li>
+<li><a href="https://quay.io/">Quay Container Registry · Quay</a></li>
+</ul>
+<h2 id="3_2">3.镜像的基本操作<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h2>
+<h3 id="1_4">①拉取方式获取镜像<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>拉取</td>
+<td>docker pull name(:tag)</td>
+</tr>
+<tr>
+<td>查看镜像列表</td>
+<td>docker image ls</td>
+</tr>
+<tr>
+<td>查看某个镜像的详细信息</td>
+<td>docker image inspect <ID(可简写)></td>
+</tr>
+<tr>
+<td>删除镜像</td>
+<td>docker image rm <ID(可简写)></td>
+</tr>
+<tr>
+<td>删除推出的镜像</td>
+<td>docker image prune -a</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_2">②导入方式获取镜像<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保存某个镜像</td>
+<td>docker image save  name:tag-o &lt;路径+名字&gt;</td>
+</tr>
+<tr>
+<td>载入某个镜像</td>
+<td>docker image load -i  &lt;路径+名字&gt;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3_3">③构建方式获取镜像<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>编写Dockerfile: 各种细节下个章节总结,这里放一个例子</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span>-y<span class="w"> </span>python3.9<span class="w"> </span>python3-pip<span class="w"> </span>python3.9-dev
+<span class="k">ADD</span><span class="w"> </span>hello.py<span class="w"> </span>/
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/hello.py&quot;</span><span class="p">]</span>
+</code></pre></div>
+<ol>
+<li>构建镜像: <code>docker image build -t name:tag</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># 要是更换镜像名字可以用如下指令</span>
+docker<span class="w"> </span>image<span class="w"> </span>tag<span class="w"> </span>原始name<span class="w"> </span>新name
+</code></pre></div>
+<h3 id="4">④提交方式获取镜像<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>在container中进行操作</li>
+<li>commit成新镜像: docker container commit <ID(可简写)>  <name(全称)></li>
+</ol>
+<h3 id="5dockerhub">⑤镜像分享到dockerhub<a class="headerlink" href="#5dockerhub" title="Permanent link">&para;</a></h3>
+<ol>
+<li>登录: docker login</li>
+<li>推送: docker image push name</li>
+</ol>
+<h1 id="dockerfile">四、Dockerfile编写指南<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h1>
+<p>## 1.FROM: 基础镜像的选择</p>
+<h3 id="1_5">①基本原则<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>为了安全: 官方镜像优于非官方的镜像，如果没有官方镜像，则尽量选择Dockerfile开源的</li>
+<li>为了稳定: 固定版本tag而不是每次都使用latest</li>
+<li>节省空间: 尽量选择体积小的镜像</li>
+</ol>
+<h2 id="2run">2.RUN: 执行指令<a class="headerlink" href="#2run" title="Permanent link">&para;</a></h2>
+<h3 id="1_6">①简单例子<a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Dockerfile.bad的内容</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget
+<span class="k">RUN</span><span class="w"> </span>wget<span class="w"> </span>https://github.com/ipinfo/cli/releases/download/ipinfo-2.0.1/ipinfo_2.0.1_linux_amd64.tar.gz
+<span class="k">RUN</span><span class="w"> </span>tar<span class="w"> </span>zxf<span class="w"> </span>ipinfo_2.0.1_linux_amd64.tar.gz
+<span class="k">RUN</span><span class="w"> </span>mv<span class="w"> </span>ipinfo_2.0.1_linux_amd64<span class="w"> </span>/usr/bin/ipinfo
+<span class="k">RUN</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>ipinfo_2.0.1_linux_amd64.tar.gz
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 构建指令</span>
+docker<span class="w"> </span>image<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span>Dockerfile.bad<span class="w"> </span>-t<span class="w"> </span>ubuntu-bad
+<span class="c1"># 查看分层</span>
+docker<span class="w"> </span>image<span class="w"> </span><span class="nb">history</span><span class="w"> </span>&lt;ID&gt;
+<span class="c1"># 输出</span>
+</code></pre></div>
+<blockquote>
+<p>每一行的RUN命令都会产生一层image layer, 导致镜像的臃肿,可以写在一起改进节约空间，分层多占用的空间是一些临时文件会保存在每个层中</p>
+</blockquote>
+<h3 id="2_3">②改进版<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Dockerfile.good内容</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>wget<span class="w"> </span>https://github.com/ipinfo/cli/releases/download/ipinfo-2.0.1/ipinfo_2.0.1_linux_amd64.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>tar<span class="w"> </span>zxf<span class="w"> </span>ipinfo_2.0.1_linux_amd64.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>mv<span class="w"> </span>ipinfo_2.0.1_linux_amd64<span class="w"> </span>/usr/bin/ipinfo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>ipinfo_2.0.1_linux_amd64.tar.gz
+</code></pre></div>
+<h2 id="3copyadd">3.COPY与ADD: 文件复制<a class="headerlink" href="#3copyadd" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>COPY</code> 和 <code>ADD</code> 都可以把local的一个文件复制到镜像里，如果目标目录不存在，则会自动创建。</li>
+<li><code>ADD</code> 比 COPY高级一点的地方就是，如果复制的是一个gzip等压缩文件时，ADD会帮助我们自动去解压缩文件。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c"># 例子1</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9.5-alpine3.13</span>
+<span class="k">COPY</span><span class="w"> </span>hello.py<span class="w"> </span>/app/hello.py
+<span class="c"># 例子2</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9.5-alpine3.13</span>
+<span class="k">ADD</span><span class="w"> </span>hello.tar.gz<span class="w"> </span>/app/
+</code></pre></div>
+<h2 id="4workdir">4.WORKDIR: 目录操作<a class="headerlink" href="#4workdir" title="Permanent link">&para;</a></h2>
+<ol>
+<li>类似于<code>cd</code>指令，如果目标目录不存在，则会自动创建。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c"># 例子</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9.5-alpine3.13</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>hello.py<span class="w"> </span>hello.py
+</code></pre></div>
+<h2 id="5argenv">5.ARG与ENV: 构建参数和环境变量<a class="headerlink" href="#5argenv" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><code>ARG</code> 和 <code>ENV</code> 是经常容易被混淆的两个Dockerfile的语法，都可以用来设置一个“变量”。 但实际上两者有很多的不同。</p>
+</blockquote>
+<h3 id="1_7">①例子<a class="headerlink" href="#1_7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c"># 原始dockerfile</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>wget<span class="w"> </span>https://github.com/ipinfo/cli/releases/download/ipinfo-2.0.1/ipinfo_2.0.1_linux_amd64.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>tar<span class="w"> </span>zxf<span class="w"> </span>ipinfo_2.0.1_linux_amd64.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>mv<span class="w"> </span>ipinfo_2.0.1_linux_amd64<span class="w"> </span>/usr/bin/ipinfo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>ipinfo_2.0.1_linux_amd64.tar.gz
+
+<span class="c"># 使用ENV编写</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">VERSION</span><span class="o">=</span><span class="m">2</span>.0.1
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>wget<span class="w"> </span>https://github.com/ipinfo/cli/releases/download/ipinfo-<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>/ipinfo_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>_linux_amd64.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>tar<span class="w"> </span>zxf<span class="w"> </span>ipinfo_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>_linux_amd64.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>mv<span class="w"> </span>ipinfo_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>_linux_amd64<span class="w"> </span>/usr/bin/ipinfo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>ipinfo_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>_linux_amd64.tar.gz
+
+<span class="c"># 使用ARG编写</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">VERSION</span><span class="o">=</span><span class="m">2</span>.0.1
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>wget<span class="w"> </span>https://github.com/ipinfo/cli/releases/download/ipinfo-<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>/ipinfo_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>_linux_amd64.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>tar<span class="w"> </span>zxf<span class="w"> </span>ipinfo_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>_linux_amd64.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>mv<span class="w"> </span>ipinfo_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>_linux_amd64<span class="w"> </span>/usr/bin/ipinfo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>ipinfo_<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>_linux_amd64.tar.gz
+</code></pre></div>
+<ol>
+<li>ARG 可以在镜像build的时候动态修改value, 通过 <code>--build-arg</code></li>
+<li>ENV 设置的变量可以在Image中保持，并在容器中的环境变量里</li>
+</ol>
+<p><img alt="4-5-1" src="../docker_img/4-5-1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c"># 构建时修改ARG例子</span>
+$<span class="w"> </span>docker<span class="w"> </span>image<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span>.<span class="se">\D</span>ockerfile-arg<span class="w"> </span>-t<span class="w"> </span>ipinfo-arg-2.0.0<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">VERSION</span><span class="o">=</span><span class="m">2</span>.0.0<span class="w"> </span>.
+$<span class="w"> </span>docker<span class="w"> </span>image<span class="w"> </span>ls
+REPOSITORY<span class="w">         </span>TAG<span class="w">       </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">          </span>SIZE
+ipinfo-arg-2.0.0<span class="w">   </span>latest<span class="w">    </span>0d9c964947e2<span class="w">   </span><span class="m">6</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">    </span>124MB
+$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>ipinfo-arg-2.0.0
+root@b64285579756:/#
+root@b64285579756:/#<span class="w"> </span>ipinfo<span class="w"> </span>version
+<span class="m">2</span>.0.0
+root@b64285579756:/#
+</code></pre></div>
+<h2 id="6cmd-1">6.CMD: 容器启动命令1<a class="headerlink" href="#6cmd-1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>容器启动时默认执行的命令</li>
+<li>如果docker container run启动容器时指定了其它命令，则CMD命令会被忽略</li>
+<li>如果定义了多个CMD，只有最后一个会被执行。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># ubuntu中自带的CMD指令</span>
+IMAGE<span class="w">          </span>CREATED<span class="w">         </span>CREATED<span class="w"> </span>BY<span class="w">                                      </span>SIZE<span class="w">      </span>COMMENT
+26b77e58432b<span class="w">   </span><span class="m">19</span><span class="w"> </span>months<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop)  CMD [&quot;/bin/bash&quot;]            0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">19</span><span class="w"> </span>months<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/run/systemd<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;do…   7B</span>
+<span class="s1">&lt;missing&gt;      19 months ago   /bin/sh -c [ -z &quot;$(apt-get indextargets)&quot; ]     0B</span>
+<span class="s1">&lt;missing&gt;      19 months ago   /bin/sh -c set -xe   &amp;&amp; echo &#39;</span><span class="c1">#!/bin/sh&#39; &gt; /…   811B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">19</span><span class="w"> </span>months<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ADD file:27277aee655dd263e…   72.9MB</span>
+</code></pre></div>
+<h2 id="7entrypoint-2">7.ENTRYPOINT: 容器启动命令2<a class="headerlink" href="#7entrypoint-2" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>CMD</code> 设置的命令，可以在<code>docker container run</code> 时传入其它命令，覆盖掉 <code>CMD</code> 的命令，但是 <code>ENTRYPOINT</code> 所设置的命令是一定会被执行的。</li>
+<li><code>ENTRYPOINT</code> 和 <code>CMD</code> 可以联合使用，<code>ENTRYPOINT</code> 设置执行的命令，<code>CMD</code>传递参数</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c"># 单独用CMD</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello docker&quot;</span><span class="p">]</span>
+<span class="c"># 单独用ENTRYPOINT</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello docker&quot;</span><span class="p">]</span>
+<span class="c"># 通过dockerfile组合ENTRYPOINT和CMD</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello docker&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;what&#39;s up&quot;</span><span class="p">]</span>
+<span class="c"># 通过命令行组合ENTRYPOINT和CMD</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello docker&quot;</span><span class="p">]</span>
+$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>demo-both-cmd<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span>
+hello<span class="w"> </span>docker<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world
+</code></pre></div>
+<h2 id="8shellexec-3">8.Shell格式与Exec格式: 容器启动命令3<a class="headerlink" href="#8shellexec-3" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>用Exec格式比较多</p>
+</blockquote>
+<h3 id="1shell">①shell格式<a class="headerlink" href="#1shell" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">CMD</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello docker&quot;</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello docker&quot;</span>
+</code></pre></div>
+<h3 id="2exec">②Exec格式<a class="headerlink" href="#2exec" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello docker&quot;</span><span class="p">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello docker&quot;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="3_4">③传参问题<a class="headerlink" href="#3_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c"># 能引用</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NAME</span><span class="o">=</span>docker
+<span class="k">CMD</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello </span><span class="nv">$NAME</span><span class="s2">&quot;</span>
+
+<span class="c"># 不能引用</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NAME</span><span class="o">=</span>docker
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello $NAME&quot;</span><span class="p">]</span>
+
+<span class="c"># 能引用</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:20.04</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NAME</span><span class="o">=</span>docker
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;echo hello $NAME&quot;</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="9dockerfile">9.Dockerfile技巧(最佳实践)<a class="headerlink" href="#9dockerfile" title="Permanent link">&para;</a></h2>
+<h3 id="1_8">①合理使用缓存<a class="headerlink" href="#1_8" title="Permanent link">&para;</a></h3>
+<ol>
+<li>镜像构建一次后会有缓存，如果之后没有更改可以使用缓存减少构建时间</li>
+<li>如果靠前的层改变了，之后的缓存都不起作用，可以把不常改变的指令放前面，经常改变的指令放后面来节省构建时间</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">## Dockerfile修改前</span>
+FROM<span class="w"> </span>python:3.9.5-slim
+COPY<span class="w"> </span>hello.py<span class="w"> </span>/src/hello.py
+EXPOSE<span class="w"> </span><span class="m">5000</span>
+RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>flask
+WORKDIR<span class="w"> </span>/src
+ENV<span class="w"> </span><span class="nv">FLASK_APP</span><span class="o">=</span>app.py
+CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;flask&quot;</span>,<span class="w"> </span><span class="s2">&quot;run&quot;</span>,<span class="w"> </span><span class="s2">&quot;-h&quot;</span>,<span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="o">]</span>
+<span class="c1"># 第一次构建</span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">2</span>/4<span class="o">]</span><span class="w"> </span>COPY<span class="w"> </span>hello.py<span class="w"> </span>/src/hello.py<span class="w">                 </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">3</span>/4<span class="o">]</span><span class="w"> </span>RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flask</span><span class="w">                       </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">4</span>/4<span class="o">]</span><span class="w"> </span>WORKDIR<span class="w"> </span>/src<span class="w"> </span>
+<span class="c1"># 第二次构建(使用了cached)</span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>CACHED<span class="w"> </span><span class="o">[</span><span class="m">2</span>/4<span class="o">]</span><span class="w"> </span>COPY<span class="w"> </span>hello.py<span class="w"> </span>/src/hello.py<span class="w">           </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>CACHED<span class="w"> </span><span class="o">[</span><span class="m">3</span>/4<span class="o">]</span><span class="w"> </span>RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flask</span><span class="w">                 </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>CACHED<span class="w"> </span><span class="o">[</span><span class="m">4</span>/4<span class="o">]</span><span class="w"> </span>WORKDIR<span class="w"> </span>/src<span class="w">    </span>
+<span class="c1">#修改hello.py内容后本层和之后的缓存都将失效</span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>CACHED<span class="w"> </span><span class="o">[</span><span class="m">1</span>/4<span class="o">]</span><span class="w"> </span>FROM<span class="w"> </span>docker.io/library/python:3.9.5-slim@sha256:9828573e...
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">2</span>/4<span class="o">]</span><span class="w"> </span>COPY<span class="w"> </span>hello.py<span class="w"> </span>/src/hello.py<span class="w">                 </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">3</span>/4<span class="o">]</span><span class="w"> </span>RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flask</span><span class="w">                       </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">4</span>/4<span class="o">]</span><span class="w"> </span>WORKDIR<span class="w"> </span>/src
+
+<span class="c1">## Dockerfile修改后</span>
+FROM<span class="w"> </span>python:3.9.5-slim
+EXPOSE<span class="w"> </span><span class="m">5000</span>
+RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>flask
+WORKDIR<span class="w"> </span>/src
+ENV<span class="w"> </span><span class="nv">FLASK_APP</span><span class="o">=</span>app.py
+COPY<span class="w"> </span>hello.py<span class="w"> </span>/src/hello.py
+CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;flask&quot;</span>,<span class="w"> </span><span class="s2">&quot;run&quot;</span>,<span class="w"> </span><span class="s2">&quot;-h&quot;</span>,<span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="o">]</span>
+<span class="w"> </span><span class="c1">#调换指令顺序后修改hello.py内容后之前的缓存有效</span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">1</span>/4<span class="o">]</span><span class="w"> </span>FROM<span class="w"> </span>docker.io/library/python:3.9.5-slim@sha256:9828573e6a0b02b6...<span class="w">                       </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>CACHED<span class="w"> </span><span class="o">[</span><span class="m">2</span>/4<span class="o">]</span><span class="w"> </span>RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flask</span><span class="w">                 </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>CACHED<span class="w"> </span><span class="o">[</span><span class="m">3</span>/4<span class="o">]</span><span class="w"> </span>WORKDIR<span class="w"> </span>/src<span class="w">                         </span>
+<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">4</span>/4<span class="o">]</span><span class="w"> </span>COPY<span class="w"> </span>hello.py<span class="w"> </span>/src/hello.py<span class="w">   </span>
+</code></pre></div>
+<h3 id="2dockerignore">②合理使用.dockerignore<a class="headerlink" href="#2dockerignore" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Docker是client-server架构，理论上Client和Server可以不在一台机器上。</p>
+</li>
+<li>
+<p>在构建docker镜像的时候，需要把所需要的文件由CLI（client）发给Server，这些文件实际上就是build context</p>
+</li>
+<li>可以通过.dockerignore来减少内容</li>
+</ol>
+<h3 id="3_5">③镜像的多阶段构建<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h3>
+<p>如果需要编译环境或中间文件过多可以试用多阶段构建来把这些步骤放在前面的阶段来节约docker image空间</p>
+<div class="highlight"><pre><span></span><code><span class="c"># 单阶段例子</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">gcc:9.4</span>
+
+<span class="k">COPY</span><span class="w"> </span>hello.c<span class="w"> </span>/src/hello.c
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/src</span>
+
+<span class="k">RUN</span><span class="w"> </span>gcc<span class="w"> </span>--static<span class="w"> </span>-o<span class="w"> </span>hello<span class="w"> </span>hello.c
+
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;/src/hello&quot;</span><span class="w"> </span><span class="p">]</span>
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="c"># 多阶段例子</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">gcc:9.4</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+
+<span class="k">COPY</span><span class="w"> </span>hello.c<span class="w"> </span>/src/hello.c
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/src</span>
+
+<span class="k">RUN</span><span class="w"> </span>gcc<span class="w"> </span>--static<span class="w"> </span>-o<span class="w"> </span>hello<span class="w"> </span>hello.c
+
+
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">alpine:3.13.5</span>
+
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/src/hello<span class="w"> </span>/src/hello
+
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;/src/hello&quot;</span><span class="w"> </span><span class="p">]</span>
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[]</span>
+</code></pre></div>
+<h3 id="4root">④使用非root用户<a class="headerlink" href="#4root" title="Permanent link">&para;</a></h3>
+<p>用非root保证一些安全性问题</p>
+<div class="highlight"><pre><span></span><code><span class="c"># root权限例子(常用)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9.5-slim</span>
+
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>flask
+
+<span class="k">COPY</span><span class="w"> </span>app.py<span class="w"> </span>/src/app.py
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/src</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">FLASK_APP</span><span class="o">=</span>app.py
+
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">5000</span>
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;flask&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-h&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">]</span>
+
+<span class="c"># 创建用户并使用用户</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9.5-slim</span>
+
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>flask<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>groupadd<span class="w"> </span>-r<span class="w"> </span>flask<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>useradd<span class="w"> </span>-r<span class="w"> </span>-g<span class="w"> </span>flask<span class="w"> </span>flask<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>mkdir<span class="w"> </span>/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>chown<span class="w"> </span>-R<span class="w"> </span>flask:flask<span class="w"> </span>/src
+
+<span class="k">USER</span><span class="w"> </span><span class="s">flask</span>
+
+<span class="k">COPY</span><span class="w"> </span>app.py<span class="w"> </span>/src/app.py
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/src</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">FLASK_APP</span><span class="o">=</span>app.py
+
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">5000</span>
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;flask&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-h&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">]</span>
+</code></pre></div>
+<h1 id="docker">五、docker的存储<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>问题：</p>
+<p>默认情况下，在运行中的容器里创建的文件，被保存在一个可写的容器层：</p>
+<ul>
+<li>如果容器被删除了，则数据也没有了</li>
+<li>这个可写的容器层是和特定的容器绑定的，也就是这些数据无法方便的和其它容器共享</li>
+</ul>
+<p><img alt="2-2-2" src="../docker_img/2-2-2.png" /></p>
+<p>解决方法：</p>
+<p>Docker主要提供了两种方式做数据的持久化</p>
+<ul>
+<li>Data Volume, 由Docker管理，(/var/lib/docker/volumes/ Linux), 持久化数据的最好方式</li>
+<li>Bind Mount，由用户指定存储的数据具体mount在系统什么位置</li>
+</ul>
+<p><img alt="5-0-1" src="../docker_img/5-0-1.png" /></p>
+</blockquote>
+<h2 id="1data-volume">1.Data Volume<a class="headerlink" href="#1data-volume" title="Permanent link">&para;</a></h2>
+<h3 id="1dockerfilevolume">①在Dockerfile中添加volume指令<a class="headerlink" href="#1dockerfilevolume" title="Permanent link">&para;</a></h3>
+<p>再一次构建同一个镜像的时候不会继续使用这个volume</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:latest</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>update
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>--no-cache<span class="w"> </span>add<span class="w"> </span>curl
+<span class="k">ENV</span><span class="w"> </span><span class="nv">SUPERCRONIC_URL</span><span class="o">=</span>https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">SUPERCRONIC</span><span class="o">=</span>supercronic-linux-amd64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">SUPERCRONIC_SHA1SUM</span><span class="o">=</span>048b95b48b708983effb2e5c935a1ef8483d9e3e
+<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>-fsSLO<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SUPERCRONIC_URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SUPERCRONIC_SHA1SUM</span><span class="si">}</span><span class="s2">  </span><span class="si">${</span><span class="nv">SUPERCRONIC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha1sum<span class="w"> </span>-c<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SUPERCRONIC</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SUPERCRONIC</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;/usr/local/bin/</span><span class="si">${</span><span class="nv">SUPERCRONIC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;/usr/local/bin/</span><span class="si">${</span><span class="nv">SUPERCRONIC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>/usr/local/bin/supercronic
+<span class="k">COPY</span><span class="w"> </span>my-cron<span class="w"> </span>/app/my-cron
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="k">VOLUME</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/app&quot;</span><span class="p">]</span><span class="w">  </span>#<span class="w"> </span>会将/app下的文件存储在volume位置，可以用docker<span class="w"> </span>volume<span class="w"> </span>ls照看当前的volume<span class="w"> </span>name，然后用docker<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>&lt;volume<span class="w"> </span>name&gt;来开看具体位置然后查看里面的内容
+
+<span class="c"># RUN cron job</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/local/bin/supercronic&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/app/my-cron&quot;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="2volume">②创建容器时指定使用volume的名字和目录，没有时则创建并使用<a class="headerlink" href="#2volume" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:latest</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>update
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>--no-cache<span class="w"> </span>add<span class="w"> </span>curl
+<span class="k">ENV</span><span class="w"> </span><span class="nv">SUPERCRONIC_URL</span><span class="o">=</span>https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">SUPERCRONIC</span><span class="o">=</span>supercronic-linux-amd64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">SUPERCRONIC_SHA1SUM</span><span class="o">=</span>048b95b48b708983effb2e5c935a1ef8483d9e3e
+<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>-fsSLO<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SUPERCRONIC_URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SUPERCRONIC_SHA1SUM</span><span class="si">}</span><span class="s2">  </span><span class="si">${</span><span class="nv">SUPERCRONIC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha1sum<span class="w"> </span>-c<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SUPERCRONIC</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SUPERCRONIC</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;/usr/local/bin/</span><span class="si">${</span><span class="nv">SUPERCRONIC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;/usr/local/bin/</span><span class="si">${</span><span class="nv">SUPERCRONIC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>/usr/local/bin/supercronic
+<span class="k">COPY</span><span class="w"> </span>my-cron<span class="w"> </span>/app/my-cron
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="c"># RUN cron job</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/local/bin/supercronic&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/app/my-cron&quot;</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 创建镜像</span>
+docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-v<span class="w"> </span>cron-data:/app<span class="w"> </span>my-cron
+</code></pre></div>
+<h3 id="3_6">③存储清理<a class="headerlink" href="#3_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>container<span class="w"> </span>ps<span class="w"> </span>-aq<span class="k">)</span>
+$<span class="w"> </span>docker<span class="w"> </span>system<span class="w"> </span>prune<span class="w"> </span>-f
+$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>prune<span class="w"> </span>-f
+</code></pre></div>
+<h2 id="2bind-mount">2.Bind Mount<a class="headerlink" href="#2bind-mount" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>data volume路径指定在了linux下的文件夹，bind mount方式可以直接绑定到某个路径</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># dockerfile接上面，创建镜像</span>
+docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">pwd</span><span class="si">}</span>:/app<span class="w"> </span>my-cron
+</code></pre></div>
+<h1 id="docker_1">六、docker的网络<a class="headerlink" href="#docker_1" title="Permanent link">&para;</a></h1>
+<h2 id="1ip">1.IP地址的查看<a class="headerlink" href="#1ip" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># windows</span>
+ipconfig
+<span class="c1"># linux</span>
+ifconfig
+或者
+ip<span class="w"> </span>addr
+</code></pre></div>
+<h2 id="2_4">2.网络连通性测试<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h2>
+<h3 id="1ping">①ping命令<a class="headerlink" href="#1ping" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># 测试ip地址是否联通
+ping 127.0.0.1
+</code></pre></div>
+<h3 id="2telnet">②telnet命令<a class="headerlink" href="#2telnet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># 测试端口是否联通
+telnet www.baidu.com 80
+</code></pre></div>
+<h2 id="3_7">3.抛出疑问<a class="headerlink" href="#3_7" title="Permanent link">&para;</a></h2>
+<ol>
+<li>为什么本地可以直接ping通docker的ip地址？</li>
+<li>为什么容器中可以直接ping通外部网络？</li>
+<li>为什么本地两个容器之间可以ping通？</li>
+<li>为什么外部机器不能ping通本地的容器地址?</li>
+<li>容器的ip地址是怎么分配的？</li>
+</ol>
+<h3 id="1pingdockerip">①为什么本地可以直接ping通docker的ip地址？<a class="headerlink" href="#1pingdockerip" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看docker的网络</span>
+docker<span class="w"> </span>network<span class="w"> </span>ls
+<span class="c1"># 查看bridge网络</span>
+docker<span class="w"> </span>inspect<span class="w"> </span>XXX<span class="o">(</span>bridge的NAME<span class="w"> </span>ID<span class="o">)</span>或者bridge<span class="w"> </span>NAME
+</code></pre></div>
+<p><img alt="6-3-1" src="../docker_img/6-3-1.png" /></p>
+<p>ubuntu通过 <code>apt-get install -y bridge-utils</code>来安装brctl，可以查看本地的bridge网络</p>
+<h3 id="2ping">②为什么容器中可以直接ping通外部网络？<a class="headerlink" href="#2ping" title="Permanent link">&para;</a></h3>
+<p>因为通过NAT转发出去</p>
+<blockquote>
+<p>公有IP地址不能让每台电脑都有个IP地址，后来发明了私有IP地址是可以重复使用的，但是私有IP地址不能直接访问公有网络，所以通过NAT把私有IP转换成公有IP在互联网中使用，然后再用公有IP传回私有IP获得结果</p>
+</blockquote>
+<h3 id="3ping">③为什么本地两个容器之间可以ping通？<a class="headerlink" href="#3ping" title="Permanent link">&para;</a></h3>
+<p>如果这两个容器在同一个bridge网络中就可以互相ping通，如果自己创建bridge网络然后把容器添加进去可以使用DNS解析功能(自己创建才自带的功能，默认创建不带)也就是直接使用容器的名字来进行请求</p>
+<h3 id="4ping">④为什么外部机器不能ping通本地的容器地址?<a class="headerlink" href="#4ping" title="Permanent link">&para;</a></h3>
+<p>因为外部请求不能通过host网络直接请求到私有IP地址。</p>
+<p>解决方法：</p>
+<ol>
+<li>可以通过端口转发出来直接请求本地机器的某个端口</li>
+</ol>
+<p><code>docker container run -d --rm --name -p 8080:80 web nginx</code></p>
+<p>在Dockerfile中可以使用EXPOSE PortID来提示对外暴露的端口，方便使用人员查看</p>
+<ol>
+<li>可以直接将docker的网络挂在host网络上使用</li>
+<li><code>docker container run -d --rm network -- name web nginx</code></li>
+</ol>
+<blockquote>
+<p>补充：还有一种none网络，个人开发者一般不用，常用于容器编排或者其他工具，网络自行来配置</p>
+</blockquote>
+<h1 id="docker-compose">七、docker-compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h1>
+<h2 id="1docker-compose">1.docker-compose是什么<a class="headerlink" href="#1docker-compose" title="Permanent link">&para;</a></h2>
+<p><img alt="7-1-1" src="../docker_img/7-1-1.png" /></p>
+<h2 id="2docker-compose">2.docker-compose安装<a class="headerlink" href="#2docker-compose" title="Permanent link">&para;</a></h2>
+<h3 id="1windowsmac">①windows与mac<a class="headerlink" href="#1windowsmac" title="Permanent link">&para;</a></h3>
+<p>安装docker-desktop后，docker-compose默认自动安装</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看docker-compose版本</span>
+docker-compose<span class="w"> </span>--version
+</code></pre></div>
+<h3 id="2linux">②linux<a class="headerlink" href="#2linux" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 通过指令安装</span>
+$<span class="w"> </span>sudo<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>/usr/local/bin/docker-compose
+$<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/docker-compose
+$<span class="w"> </span>docker-compose<span class="w"> </span>--version
+</code></pre></div>
+<h3 id="3pip">③通过pip安装<a class="headerlink" href="#3pip" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>docker-compose
+</code></pre></div>
+<h2 id="3compose">3.compose文件的结构和版本<a class="headerlink" href="#3compose" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>语法说明:<a href="https://docs.docker.com/compose/compose-file/">Compose specification | Docker Documentation</a></p>
+<p>版本相关信息:<a href="https://docs.docker.com/compose/compose-file/compose-versioning/">Compose file versions and upgrading | Docker Documentation</a></p>
+<p>Compose文件是一个YAML文件，为Docker应用程序定义服务、网络和卷。</p>
+</blockquote>
+<h3 id="1_9">①基本语法结构<a class="headerlink" href="#1_9" title="Permanent link">&para;</a></h3>
+<p>一个样板</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+
+<span class="nt">services</span><span class="p">:</span><span class="w"> </span><span class="c1"># 容器</span>
+<span class="w">  </span><span class="nt">servicename</span><span class="p">:</span><span class="w"> </span><span class="c1"># 服务名字，这个名字也是内部 bridge网络可以使用的 DNS name</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="c1"># 镜像的名字</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="c1"># 可选，如果设置，则会覆盖默认镜像里的 CMD命令</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="c1"># 可选，相当于 docker run里的 --env</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="c1"># 可选，相当于docker run里的 -v</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w"> </span><span class="c1"># 可选，相当于 docker run里的 --network</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="c1"># 可选，相当于 docker run里的 -p</span>
+<span class="w">  </span><span class="nt">servicename2</span><span class="p">:</span>
+
+<span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="c1"># 可选，相当于 docker volume create</span>
+
+<span class="nt">networks</span><span class="p">:</span><span class="w"> </span><span class="c1"># 可选，相当于 docker network create</span>
+</code></pre></div>
+<p>一个例子</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 原来需要的三个步骤 </span>
+<span class="c1">## prepare image</span>
+docker<span class="w"> </span>image<span class="w"> </span>pull<span class="w"> </span>redis
+docker<span class="w"> </span>image<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>flask-demo<span class="w"> </span>.
+
+<span class="c1">## create network</span>
+docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>-d<span class="w"> </span>bridge<span class="w"> </span>demo-network
+
+<span class="c1">## create container</span>
+docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-server<span class="w"> </span>--network<span class="w"> </span>demo-network<span class="w"> </span>redis
+docker<span class="w"> </span>container<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="w"> </span>demo-network<span class="w"> </span>--name<span class="w"> </span>flask-demo<span class="w"> </span>--env<span class="w"> </span><span class="nv">REDIS_HOST</span><span class="o">=</span>redis-server<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:5000<span class="w"> </span>flask-demo
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 修改成docker-compose.yml</span>
+version:<span class="w"> </span><span class="s2">&quot;3.8&quot;</span>
+
+services:
+<span class="w">  </span>flask-demo:
+<span class="w">    </span>image:<span class="w"> </span>flask-demo:latest
+<span class="w">    </span>environment:
+<span class="w">      </span>-<span class="w"> </span><span class="nv">REDIS_HOST</span><span class="o">=</span>redis-server
+<span class="w">    </span>networks:
+<span class="w">      </span>-<span class="w"> </span>demo-network
+<span class="w">    </span>ports:
+<span class="w">      </span>-<span class="w"> </span><span class="m">8080</span>:5000
+
+<span class="w">  </span>redis-server:
+<span class="w">    </span>image:<span class="w"> </span>redis:latest
+<span class="w">    </span>networks:
+<span class="w">     </span>-<span class="w"> </span>demo-network
+
+networks:
+<span class="w">  </span>demo-network:
+</code></pre></div>
+<h3 id="2_5">②基本命令<a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前台启动</td>
+<td>docker-compose up</td>
+<td>需要在当前的yaml的路径下，不然要通过-f来指定对应文件路径</td>
+</tr>
+<tr>
+<td>后台启动</td>
+<td>docker-compose up -d</td>
+<td>支持的文件(Supported filenames): docker-compose.yml, docker-compose.yaml, compose.yml, compose.yaml</td>
+</tr>
+<tr>
+<td>后台情况下查看日志</td>
+<td>docker-compose logs</td>
+<td></td>
+</tr>
+<tr>
+<td>持续查看</td>
+<td>docker-compose logs -f</td>
+<td></td>
+</tr>
+<tr>
+<td>查看</td>
+<td>docker-compose ps</td>
+<td></td>
+</tr>
+<tr>
+<td>停止</td>
+<td>docker-compose stop</td>
+<td></td>
+</tr>
+<tr>
+<td>删除</td>
+<td>docker-compose rm</td>
+<td></td>
+</tr>
+<tr>
+<td>提前拉取镜像</td>
+<td>docker-compose pull</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3docker-compose">③docker-compose镜像构建和拉取<a class="headerlink" href="#3docker-compose" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 从本地来build镜像</span>
+<span class="c1"># 修改成docker-compose.yml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">flask-demo</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./flask</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flask-demo:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REDIS_HOST=redis-server</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-network</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080:5000</span>
+
+<span class="w">  </span><span class="nt">redis-server</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:latest</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-network</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">demo-network</span><span class="p">:</span>
+</code></pre></div>
+<h3 id="4docker-compose">④docker-compose服务更新<a class="headerlink" href="#4docker-compose" title="Permanent link">&para;</a></h3>
+<ol>
+<li>如果需要docker-compose中需要的build的部分有修改可以通过执行<code>docker-compose up -d --build</code> 来自动build已经修改的部分来更新服务</li>
+<li>如果有修改一些配置可以通过执行<code>docker-compose restart</code>来重启容器</li>
+<li>如果有些服务已经在docker-compose中没有了可以通过执行 <code>docker-compose remove-orphans</code>来删除没用的容器</li>
+</ol>
+<h2 id="4compose">4.compose网络<a class="headerlink" href="#4compose" title="Permanent link">&para;</a></h2>
+<p>单机的docker-compose默认driver是bridge网络</p>
+<h2 id="5_1">5.水平扩展和负载均衡<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--scale<span class="w"> </span><span class="nv">services_name</span><span class="o">=</span>N
+</code></pre></div>
+<p>水平扩展某个服务后docker-compose会自动做负载均衡</p>
+<h2 id="6_1">6.环境变量<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h2>
+<h3 id="1environment">①通过environment来设定<a class="headerlink" href="#1environment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>version:<span class="w"> </span><span class="s2">&quot;3.8&quot;</span>
+
+services:
+<span class="w">  </span>flask:
+<span class="w">    </span>build:
+<span class="w">      </span>context:<span class="w"> </span>./flask
+<span class="w">      </span>dockerfile:<span class="w"> </span>Dockerfile
+<span class="w">    </span>image:<span class="w"> </span>flask-demo:latest
+<span class="w">    </span>environment:
+<span class="w">      </span>-<span class="w"> </span><span class="nv">REDIS_HOST</span><span class="o">=</span>redis-server
+<span class="w">      </span>-<span class="w"> </span><span class="nv">REDIS_PASS</span><span class="o">=</span><span class="si">${</span><span class="nv">REDIS_PASSWORD</span><span class="si">}</span>
+<span class="w">    </span>networks:
+<span class="w">      </span>-<span class="w"> </span>backend
+<span class="w">      </span>-<span class="w"> </span>frontend
+
+<span class="w">  </span>redis-server:
+<span class="w">    </span>image:<span class="w"> </span>redis:latest
+<span class="w">    </span>command:<span class="w"> </span>redis-server<span class="w"> </span>--requirepass<span class="w"> </span><span class="si">${</span><span class="nv">REDIS_PASSWORD</span><span class="si">}</span>
+<span class="w">    </span>networks:
+<span class="w">      </span>-<span class="w"> </span>backend
+
+<span class="w">  </span>nginx:
+<span class="w">    </span>image:<span class="w"> </span>nginx:stable-alpine
+<span class="w">    </span>ports:
+<span class="w">      </span>-<span class="w"> </span><span class="m">8000</span>:80
+<span class="w">    </span>depends_on:
+<span class="w">      </span>-<span class="w"> </span>flask
+<span class="w">    </span>volumes:
+<span class="w">      </span>-<span class="w"> </span>./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+<span class="w">      </span>-<span class="w"> </span>./var/log/nginx:/var/log/nginx
+<span class="w">    </span>networks:
+<span class="w">      </span>-<span class="w"> </span>frontend
+
+networks:
+<span class="w">  </span>backend:
+<span class="w">  </span>frontend:
+</code></pre></div>
+<h3 id="2env_file">②通过env_file来传入<a class="headerlink" href="#2env_file" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># .env文件内容
+REDIS_PASSWORD=ABC123
+
+# 然后通过命令行执行
+docker-compose --env-file ./.env up(或者config来配置)
+</code></pre></div>
+<h2 id="7">7.服务依赖与健康检查<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="1_10">①服务依赖<a class="headerlink" href="#1_10" title="Permanent link">&para;</a></h3>
+<p>有些服务之间有相互依赖的启动顺序关系，可以通过 <code>depends_on</code>关键字来设置</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">flask</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./flask</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flask-demo:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REDIS_HOST=redis-server</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REDIS_PASS=${REDIS_PASSWORD}</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;curl&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-f&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;http://localhost:5000&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">start_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40s</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">redis-server</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+
+<span class="w">  </span><span class="nt">redis-server</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:latest</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-server --requirepass ${REDIS_PASSWORD}</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;redis-cli&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ping&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span>
+
+<span class="w">  </span><span class="nt">nginx</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:stable-alpine</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000:80</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">flask</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./var/log/nginx:/var/log/nginx</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
+</code></pre></div>
+<h3 id="2_6">②健康检查<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h3>
+<p>Dockerfile healthcheck:<a href="https://docs.docker.com/engine/reference/builder/#healthcheck">Dockerfile reference | Docker Documentation</a></p>
+<p>Docker compose healthcheck:<a href="https://docs.docker.com/compose/compose-file/compose-file-v3/#healthcheck">Compose file version 3 reference | Docker Documentation</a></p>
+<h1 id="docker-swarm">八、docker-swarm<a class="headerlink" href="#docker-swarm" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>生产环境中需要高可靠性，docker-compose如果出现单节点故障就凉凉</p>
+</blockquote>
+<h2 id="1swarm">1.swarm基本操作<a class="headerlink" href="#1swarm" title="Permanent link">&para;</a></h2>
+<ol>
+<li>查看服务: <code>docker service ls</code></li>
+<li>查看服务的容器信息: <code>docker service ps 5ev</code></li>
+<li>创建一个nginx的服务: <code>docker service create nginx:latest</code></li>
+<li>服务扩展: <code>docker service update 5ev --replicas 3</code> (这里swarm会自动启动新的挂掉的容器)</li>
+<li>删除服务: <code>docker service rm 5ev</code></li>
+<li>查看日志: <code>docker service 5ev logs  持续查看docker service 5ev logs -f</code></li>
+<li>查看节点基本信息: <code>docker node ls</code></li>
+<li>查看机器的详细信息: <code>docker inspect 5ev</code></li>
+</ol>
+<h2 id="2overlay">2.overlay网络<a class="headerlink" href="#2overlay" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>swarm的网络重要的两点</p>
+<ul>
+<li>第一是外部如何访问部署运行在swarm集群内的服务，可以称之为 <code>入方向</code> 流量，在swarm里我们通过 <code>ingress</code> 来解决</li>
+<li>第二是部署在swarm集群里的服务，如何对外进行访问，这部分又分为两块:</li>
+<li>第一，<code>东西向流量</code> ，也就是不同swarm节点上的容器之间如何通信，swarm通过 <code>overlay</code> 网络来解决；</li>
+<li>第二，<code>南北向流量</code> ，也就是swarm集群里的容器如何对外访问，比如互联网，这个是 <code>Linux bridge + iptables NAT</code> 来解决的</li>
+</ul>
+<p>类似于bridge连接，解决不同主机之间的容器间数据互联的网络问题</p>
+</blockquote>
+<p><img alt="8-2-1" src="../docker_img/8-2-1.png" /></p>
+<ol>
+<li>创建overlay网络: <code>docker network create -d overlay mynet</code></li>
+<li>创建服务: <code>docker service create --network mynet --name test --replicas 2 busybox ping 8.8.8.8</code></li>
+</ol>
+<h2 id="3ingress">3.ingress网络<a class="headerlink" href="#3ingress" title="Permanent link">&para;</a></h2>
+<p>docker swarm的ingress网络又叫 <code>Ingress Routing Mesh</code></p>
+<p>主要是为了实现把service的服务端口对外发布出去，让其能够被外部网络访问到。</p>
+<p>ingress routing mesh是docker swarm网络里最复杂的一部分内容，包括多方面的内容：</p>
+<ul>
+<li>iptables的 Destination NAT流量转发</li>
+<li>Linux bridge, network namespace</li>
+<li>使用IPVS技术做负载均衡</li>
+<li>包括容器间的通信（overlay）和入方向流量的端口转发</li>
+</ul>
+<h2 id="4service">4.部署多service应用<a class="headerlink" href="#4service" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>docker-compose多用于开发测试环境，可以build镜像，swarm多用于生产环境，不能build镜像，通过stack来启动服务</p>
+</blockquote>
+<p>通过stack启动服务</p>
+<p><code>env REDIS_PASSWORD=ABC123 docker stack deploy --compose-file docker-compose.yml flask-demo</code></p>
+<h2 id="5swarmsecretpass">5.在swarm中使用secret(pass)<a class="headerlink" href="#5swarmsecretpass" title="Permanent link">&para;</a></h2>
+<h2 id="6swarmvolumepass">6.在swarm使用本地volume(pass)<a class="headerlink" href="#6swarmvolumepass" title="Permanent link">&para;</a></h2>
+<h1 id="docker_2">九、docker的多架构支持<a class="headerlink" href="#docker_2" title="Permanent link">&para;</a></h1>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
