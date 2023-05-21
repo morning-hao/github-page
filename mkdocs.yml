@@ -11,6 +11,7 @@ nav:
     - 2018-bert.md: 论文阅读/2018-bert.md
     - 2021-LoRA.md: 论文阅读/2021-LoRA.md
     - 2021-P-tuning2.md: 论文阅读/2021-P-tuning2.md
+    - 2021-simCSE.md: 论文阅读/2021-simCSE.md
     - 2022-self_instruct.md: 论文阅读/2022-self_instruct.md
   - 数据结构:
     - 剑指offer: 数据结构/剑指offer.md
